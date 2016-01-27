@@ -39,28 +39,28 @@ class Tree {
     console.log();
   }
 
-  transform(new_left?: TreeNode, new_right?: TreeNode) {
-    var next_left = this.root.right // 2, 4, 6, x
-    var next_right = this.root      // 1, 3, 5, 7
-    var next_root = this.root.left  // 3, 5, 7, x
-    this.root.left = new_left || null;
-    this.root.right = new_right || null;
-    if (next_root) {
-      this.root = next_root;
-      this.transform(next_left, next_right);
+  transform(newLeft?: TreeNode, newRight?: TreeNode) {
+    var nextLeft = this.root.right // 2, 4, 6, x
+    var nextRight = this.root      // 1, 3, 5, 7
+    var nextRoot = this.root.left  // 3, 5, 7, x
+    this.root.left = newLeft || null;
+    this.root.right = newRight || null;
+    if (nextRoot) {
+      this.root = nextRoot;
+      this.transform(nextLeft, nextRight);
     } else {
       return;
     }
   }
 }
 
-//       [1]        [1]    [7]←[5]←[3]←[1]
+//      →[1]        [1]    [7]←[5]←[3]←[1]←
 //       ↙ ↘        ↗            ↘   ↘   ↘
 //     [3] [2]    [3]→[2]        [6] [4] [2]
 //     ↙ ↘        ↗
-//   [5] [4]    [5]→[4]      [7]→[5]→[3]→[1]
+//   [5] [4]    [5]→[4]     →[7]→[5]→[3]→[1]
 //   ↙ ↘        ↗            ↙   ↙   ↙
-// [7] [6]    [7]→[6]      [6] [4] [2]
+// [7] [6]   →[7]→[6]      [6] [4] [2]
 
 var _5 = new TreeNode(5, new TreeNode(7), new TreeNode(6));
 var _3 = new TreeNode(3, _5, new TreeNode(4));
