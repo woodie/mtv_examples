@@ -39,15 +39,15 @@ class Tree {
     console.log();
   }
 
-  transform(new_right?: TreeNode, new_left?: TreeNode) {
+  transform(new_left?: TreeNode, new_right?: TreeNode) {
     var next_left = this.root.right // 2, 4, 6, x
     var next_right = this.root      // 1, 3, 5, 7
     var next_root = this.root.left  // 3, 5, 7, x
-    this.root.right = new_right || null;
     this.root.left = new_left || null;
+    this.root.right = new_right || null;
     if (next_root) {
       this.root = next_root;
-      this.transform(next_right, next_left);
+      this.transform(next_left, next_right);
     } else {
       return;
     }
