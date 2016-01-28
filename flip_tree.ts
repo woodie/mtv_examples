@@ -40,9 +40,9 @@ class Tree {
   }
 
   transform(newLeft?: TreeNode, newRight?: TreeNode) {
-    var nextLeft = this.root.right // 2, 4, 6, x
-    var nextRight = this.root      // 1, 3, 5, 7
-    var nextRoot = this.root.left  // 3, 5, 7, x
+    var nextLeft = this.root.right // 2, 4, x, 8, x
+    var nextRight = this.root      // 1, 3, 5, 7, 9
+    var nextRoot = this.root.left  // 3, 5, 7, 9, x
     this.root.left = newLeft || null;
     this.root.right = newRight || null;
     if (nextRoot) {
@@ -54,15 +54,18 @@ class Tree {
   }
 }
 
-//      →[1]        [1]    [7]←[5]←[3]←[1]←
-//       ↙ ↘        ↗            ↘   ↘   ↘
-//     [3] [2]    [3]→[2]        [6] [4] [2]
-//     ↙ ↘        ↗
-//   [5] [4]    [5]→[4]     →[7]→[5]→[3]→[1]
-//   ↙ ↘        ↗            ↙   ↙   ↙
-// [7] [6]   →[7]→[6]      [6] [4] [2]
+//        →[1]        [1]   [9]←[7]←[5]←[3]←[1]←
+//         ↙ ↘        ↗           ↘       ↘   ↘
+//       [3] [2]    [3]→[2]       [8]     [4] [2]
+//       ↙ ↘       ↗
+//     [5] [4]    [5]→[4]
+//     ↙          ↗
+//   [7]        [7]          →[9]→[7]→[5]→[3]→[1]
+//   ↙ ↘        ↗             ↙       ↙   ↙
+// [9] [8]   →[9]→[8]       [8]     [4] [2]
 
-var _5 = new TreeNode(5, new TreeNode(7), new TreeNode(6));
+var _7 = new TreeNode(7, new TreeNode(9), new TreeNode(8));
+var _5 = new TreeNode(5, _7);
 var _3 = new TreeNode(3, _5, new TreeNode(4));
 var _1 = new TreeNode(1, _3, new TreeNode(2));
 
@@ -73,12 +76,12 @@ tree.print(); // transformed
 
 /*
 
-[7]←[5]←[3]←[1]←
-     ↓   ↓   ↓
-    [6] [4] [2]
+[9]←[7]←[5]←[3]←[1]←
+     ↓       ↓   ↓
+    [8]     [4] [2]
 
-→[7]→[5]→[3]→[1]
-  ↓   ↓   ↓
- [6] [4] [2]
+→[9]→[7]→[5]→[3]→[1]
+  ↓       ↓   ↓
+ [8]     [4] [2]
 
 */
