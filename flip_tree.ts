@@ -19,7 +19,7 @@ class Tree {
   print() {
     var rtl = (this.root.right && this.root.right.right)
     var out = [[],[],[]];
-    var cursor = this.root
+    var cursor = this.root;
     while (cursor) {
       if (rtl) {
         out[0].push("→[" + cursor.value + "]");
@@ -40,9 +40,9 @@ class Tree {
   }
 
   transform(newLeft?: TreeNode, newRight?: TreeNode) {
-    var nextLeft = this.root.right // 2, 4, x, 8, x
-    var nextRight = this.root      // 1, 3, 5, 7, 9
-    var nextRoot = this.root.left  // 3, 5, 7, 9, x
+    var nextLeft = this.root.right; // 2, 4, x, 8, x
+    var nextRight = this.root;      // 1, 3, 5, 7, 9
+    var nextRoot = this.root.left;  // 3, 5, 7, 9, x
     this.root.left = newLeft || null;
     this.root.right = newRight || null;
     if (nextRoot) {
